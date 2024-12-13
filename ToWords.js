@@ -1,44 +1,77 @@
-const under20 = {
-    1: "one",
-    2: "two",
-    3: "three",
-    4: "four",
-    5: "five",
-    6: "six",
-    7: "seven",
-    8: "eight",
-    9: "nine",
-    10: "ten",
-    11: "eleven",
-    12: "twelve",
-    13: "thirteen",
-    14: "fourteen",
-    15: "fifteen",
-    16: "sixteen",
-    17: "seventeen",
-    18: "eighteen",
-    19: "nineteen"
+const under20 = [
+    null,
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen"
+];
+Object.freeze(under20);
+
+const tens = [
+    null,
+    null,
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety"
+];
+Object.freeze(tens);
+
+const ions = [
+    "thousand",
+    "million",
+    "billion",
+    "trillion",
+    "quadrillion",
+    "quintillion",
+    "sextillion",
+    "septillion",
+    "million",
+    "nonillion",
+    "decillion",
+];
+Object.freeze(ions);
+
+const toWords = num => {
+    const words = [];
+    while (num > 0) {
+
+        if (num < 20) {
+            words.push(under20[num]);
+            num = Math.floor(num / 100)
+        } else {
+            const ones = num % 10
+            if (ones) {
+                words.push(under20[ones])
+            }
+            num = Math.floor(num / 10)
+            words.push(tens[num % 10])
+            num = Math.floor(num / 10)
+        }
+        if(num > 0) {
+            words.push('hundred');
+        }
+    }
+    return words.reverse().join(' ')
 }
-const tens = {
-    2: "twenty",
-    3: "thirty",
-    4: "forty",
-    5: "fifty",
-    6: "sixty",
-    7: "seventy",
-    8: "eighty",
-    9: "ninety"
-}
-const ions = {
-    0: "thousand",
-    1: "million",
-    2: "billion",
-    3: "trillion",
-    4: "quadrillion",
-    5: "quintillion",
-    6: "sextillion",
-    7: "septillion",
-    8: "million",
-    9: "nonillion",
-    10: "decillion",
-}
+
+export {under20, tens, ions, toWords}
