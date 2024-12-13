@@ -14,12 +14,20 @@
 <main>
     <h1>Roman Numeral Converter</h1>
     <form>
-        <fieldset><label for="number">Enter a Number:</label><br><input type="number" id="number">
-            <button type="button" id="convert-btn">Convert</button>
+        <fieldset><label for="toRomanNum">Convert to Roman Numeral:</label><br><input type="number" id="toRomanNum" placeholder="123">
+            <button type="button" id="toRomanConvertBtn">Convert</button>
         </fieldset>
     </form>
-    <p id="output" class="output hidden"></p>
+    <output id="toRomanOutput" class="output hidden"></output>
+    <br>
+    <form>
+        <fieldset><label for="toWords">Convert to Words:</label><br><input type="number" id="toWords" placeholder="456">
+            <button type="button" id="toWordsConvertBtn">Convert</button>
+        </fieldset>
+    </form>
+    <output id="toWordsOutput" class="output hidden"></output>
 </main>
-<script src="main.js"></script>
+<script type="module" src="main.js"></script>
+
 </body>
 </html>

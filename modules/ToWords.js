@@ -1,3 +1,5 @@
+import {invalidRoman} from "./ToRoman.js";
+
 const under20 = [
     null,
     "one",
@@ -54,6 +56,8 @@ const ions = [
 Object.freeze(ions);
 
 const toWords = num => {
+    num = parseInt(num)
+    if(isNaN(num)) return invalidRoman.notANumber
     if (num === 0) return "zero";
     const isNegative = num < 0;
     if (isNegative) {

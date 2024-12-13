@@ -1,6 +1,8 @@
-const assert = require('assert');
-const {toWords} = require("../ToWords");
-const {toRoman, validRoman, invalidRoman} = require("../ToRoman");
+import * as assert from "node:assert";
+import {toWords} from "../modules/ToWords.js";
+import {invalidRoman, toRoman, validRoman} from "../modules/ToRoman.js";
+
+
 describe('toWords()', function () {
     it('should return a string of words that represent the number passed in 0', function () {
         // Setup

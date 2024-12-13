@@ -20,11 +20,14 @@ const validRoman = {
 
 const invalidRoman = {
     tooLow: "Please enter a number greater than or equal to 1",
-    tooHigh: "Please enter a number less than or equal to 3999"
+    tooHigh: "Please enter a number less than or equal to 3999",
+    notANumber: "Please enter a valid number"
 }
 Object.freeze(romanNums)
 const toRoman = num => {
+    num = parseInt(num)
     const romanResult = []
+    if(isNaN(num)) return invalidRoman.notANumber
     if(num < validRoman.min) return invalidRoman.tooLow
     if(num > validRoman.max) return invalidRoman.tooHigh
     let romanIt = romanNums.length - 1
