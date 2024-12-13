@@ -1,12 +1,6 @@
 const assert = require('assert');
 const {toWords} = require("../ToWords");
-describe('Array', function () {
-    describe('#indexOf()', function () {
-        it('should return -1 when the value is not present', function () {
-            assert.equal([1, 2, 3].indexOf(4), -1);
-        });
-    });
-});
+const {toRoman, validRoman, invalidRoman} = require("../ToRoman");
 describe('toWords()', function () {
     it('should return a string of words that represent the number passed in 0', function () {
         // Setup
@@ -136,6 +130,96 @@ describe('toWords()', function () {
 
         // Exercise
         const result = toWords(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+})
+describe('toRoman()', function () {
+    it(`doesn't convert values less than ${validRoman.min} or greater than ${validRoman.max} B`, function () {
+        // Setup
+        const input = -123
+        const expected = invalidRoman.tooLow
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it(`doesn't convert values less than ${validRoman.min} or greater than ${validRoman.max} B`, function () {
+        // Setup
+        const input = 0
+        const expected = invalidRoman.tooLow
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it(`doesn't convert values less than ${validRoman.min} or greater than ${validRoman.max} C`, function () {
+        // Setup
+        const input = 4000
+        const expected = invalidRoman.tooHigh
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it("Passes FCC test A", function () {
+        // Setup
+        const input = 9
+        const expected = "IX"
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it("Passes FCC test B", function () {
+        // Setup
+        const input = 16
+        const expected = "XVI"
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it("Passes FCC test C", function () {
+        // Setup
+        const input = 649
+        const expected = "DCXLIX"
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it("Passes FCC test D", function () {
+        // Setup
+        const input = 1023
+        const expected = "MXXIII"
+
+        // Exercise
+        const result = toRoman(input);
+
+        // Verify
+        assert.strictEqual(result, expected);
+    })
+    it("Passes FCC test E", function () {
+        // Setup
+        const input = 3999
+        const expected = "MMMCMXCIX"
+
+        // Exercise
+        const result = toRoman(input);
 
         // Verify
         assert.strictEqual(result, expected);

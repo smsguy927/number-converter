@@ -54,6 +54,11 @@ const ions = [
 Object.freeze(ions);
 
 const toWords = num => {
+    if (num === 0) return "zero";
+    const isNegative = num < 0;
+    if (isNegative) {
+        num *= -1
+    }
     const words = [];
     let ionsIt = 0
     while (num > 0) {
@@ -83,6 +88,7 @@ const toWords = num => {
             ionsIt++
         }
     }
+    isNegative && words.push("negative");
     return words.reverse().join(' ')
 }
 
